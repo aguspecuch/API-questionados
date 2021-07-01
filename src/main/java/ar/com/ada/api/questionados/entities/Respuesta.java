@@ -46,6 +46,7 @@ public class Respuesta {
     }
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
+        pregunta.agregarRespuesta(this);
     }
 
     
