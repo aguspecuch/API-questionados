@@ -18,8 +18,26 @@ public class CategoriaService {
         return repository.findAll();
     }
 
-    public void crearCategoria(Categoria categoria){
-        repository.save(categoria);
+    public Categoria buscarCategoriaPorId(Integer id){
+        Optional<Categoria> resultado = repository.findById(id);
+        Categoria categoria = null;
+
+        if (resultado.isPresent()){
+            categoria = resultado.get();
+        }
+
+        return categoria;
+    }
+
+    public boolean crearCategoria(Categoria categoria){
+
+        if (repository.existsByNombre(categoria.getNombre())) {
+            return false;
+        }
+        else {
+            repository.save(categoria);
+            return true;
+        }
     }
 
 }

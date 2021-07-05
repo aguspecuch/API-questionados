@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ar.com.ada.api.questionados.services.PreguntaService;
 import ar.com.ada.api.questionados.entities.*;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
+import ar.com.ada.api.questionados.models.request.InfoPreguntaNueva;
 
 @RestController
 public class PreguntaController {
@@ -22,19 +23,25 @@ public class PreguntaController {
     }
 
     @GetMapping("/preguntas/{id}")
-    public ResponseEntity<Pregunta> traerPregunta(@PathVariable Integer id){
-        return ResponseEntity.ok(service.traerPregunta(id));
+    public ResponseEntity<Pregunta> buscarPreguntaPorId(@PathVariable Integer id){
+        return ResponseEntity.ok(service.buscarPreguntaPorId(id));
     }
 
     @PostMapping("/preguntas")
-    public ResponseEntity<?> crearPregunta(@RequestBody Pregunta pregunta){
-        service.crearPregunta(pregunta);
-
+    public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
+       
+        Pregunta pregunta = service.crearPregunta(preguntaNueva.enunciado, preguntaNueva.categoriaId, preguntaNueva.opciones);
         GenericResponse r = new GenericResponse();
-        r.isOk = true;
-        r.id = pregunta.getPreguntaId();
-        r.message = "Pregunta creada con exito";
 
-        return ResponseEntity.ok(r);
+        if (pregunta != null) {
+            r.isOk = true;
+            r.id = pregunta.getPreguntaId();
+            r.message = "La pregunta fue creada con exito";
+            return ResponseEntity.ok(r);
+        } else {
+            r.isOk = false;
+            r.message = "La pregunta que desea crear ya existe";
+            return ResponseEntity.badRequest().body(r);
+        }
     }
 }

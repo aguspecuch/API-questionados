@@ -14,11 +14,14 @@ public class PreguntaService {
     @Autowired
     PreguntaRepository repository;
 
+    @Autowired
+    CategoriaService categoriaService;
+
     public List<Pregunta> traerPreguntas(){
         return repository.findAll();
     }
 
-    public Pregunta traerPregunta(Integer preguntaId){
+    public Pregunta buscarPreguntaPorId(Integer preguntaId){
 
         Optional<Pregunta> resultado = repository.findById(preguntaId);
         Pregunta pregunta = null;
@@ -29,7 +32,22 @@ public class PreguntaService {
         return pregunta;
     }
 
-    public void crearPregunta(Pregunta pregunta){
-        repository.save(pregunta);
+    public Pregunta crearPregunta(String enunciado, Integer categoriaId, List<Respuesta> opciones){
+        
+        Pregunta pregunta = null;
+
+        if (!repository.existsByEnunciado(enunciado)){
+            pregunta = new Pregunta();
+            pregunta.setEnunciado(enunciado);
+            pregunta.setCategoria(categoriaService.buscarCategoriaPorId(categoriaId));
+
+            for (Respuesta respuesta: opciones) {
+                respuesta.setPregunta(pregunta);
+            }
+            
+            repository.save(pregunta);
+        }
+
+        return pregunta;
     }
 }

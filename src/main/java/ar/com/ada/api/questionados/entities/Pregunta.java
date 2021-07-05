@@ -15,7 +15,7 @@ public class Pregunta {
 
     private String enunciado;
 
-    @OneToMany (mappedBy = "opciones", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Respuesta> opciones = new ArrayList<>();
 
     @ManyToOne

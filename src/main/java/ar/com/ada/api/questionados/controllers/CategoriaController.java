@@ -21,15 +21,24 @@ public class CategoriaController {
         return ResponseEntity.ok(service.traerCategorias());
     }
 
+    @GetMapping("/categorias/{id}")
+    public ResponseEntity<Categoria> buscarCategoriaPorId(@PathVariable Integer id){
+        return ResponseEntity.ok(service.buscarCategoriaPorId(id));
+    }
+
     @PostMapping("/categorias")
     public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
-        service.crearCategoria(categoria);
-
         GenericResponse r = new GenericResponse();
-        r.isOk = true;
-        r.id = categoria.getCategoriaId();
-        r.message = "Categoria creada con exito";
-
-        return ResponseEntity.ok(r);
+        
+        if (service.crearCategoria(categoria)) {
+            r.isOk = true;
+            r.id = categoria.getCategoriaId();
+            r.message = "Categoria creada con exito";
+            return ResponseEntity.ok(r);
+        } else {
+            r.isOk = false;
+            r.message = "La Categoria que desea crear ya existe";
+            return ResponseEntity.badRequest().body(r);
+        }
     }
 }
