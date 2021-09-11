@@ -12,6 +12,7 @@ import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.models.request.InfoPreguntaNueva;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class PreguntaController {
     
     @Autowired

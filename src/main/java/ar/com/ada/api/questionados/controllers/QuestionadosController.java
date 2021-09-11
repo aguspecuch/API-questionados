@@ -10,6 +10,7 @@ import ar.com.ada.api.questionados.models.response.*;
 import ar.com.ada.api.questionados.services.QuestionadosService;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class QuestionadosController {
     
     @Autowired

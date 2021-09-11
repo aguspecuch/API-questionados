@@ -11,6 +11,7 @@ import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.services.CategoriaService;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class CategoriaController {
     
     @Autowired
