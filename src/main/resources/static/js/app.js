@@ -14,7 +14,7 @@ let pregunta = traerPreguntaRandom()
 
 function traerPreguntaRandom() {
 
-    $.get("https://questionados-ada.herokuapp.com/questionados/next", (resp, status) => {
+    $.get("/questionados/next", (resp, status) => {
 
         $("main").prepend(`
         <section id="question" class="question container-fluid">
