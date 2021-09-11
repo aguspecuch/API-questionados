@@ -8,7 +8,7 @@ let puntos = 0
 
 
 let pregunta = traerPreguntaRandom()
-// chequearRespuesta(pregunta)
+chequearRespuesta(pregunta)
 
 
 
@@ -23,9 +23,9 @@ function traerPreguntaRandom() {
         </section>
 
         <section id="options" class="options d-grid gap-3 col-5 mx-auto">
-            <button id="op1" class="btn op">${resp.opciones[0]}</button>
-            <button id="op2" class="btn op">${resp.opciones[1]}</button>
-            <button id="op3" class="btn op">${resp.opciones[2]}</button>
+            <button id="op1" class="btn op">${resp.opciones[0].texto}</button>
+            <button id="op2" class="btn op">${resp.opciones[1].texto}</button>
+            <button id="op3" class="btn op">${resp.opciones[2].texto}</button>
         </section>
 
         <section id="score" class="score">
