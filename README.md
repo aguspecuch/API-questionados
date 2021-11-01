@@ -9,7 +9,13 @@ Permite crear categorias y preguntas con sus respuestas. Para la jugabilidad se 
 - SpringBoot.
 - Maven.
 - Hibernate.
-- MySQL.
+
+<h2>🛢 Base de Datos: </h2>
+
+- MySQL:
+
+![questionados_db](https://user-images.githubusercontent.com/79877290/139715037-9c1ee241-f1ce-4d2f-a43d-b367f06873d5.png)
+
 
 <h2>📚 Documentacion:</h2>
 
