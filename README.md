@@ -17,7 +17,7 @@ Permite crear categorias y preguntas con sus respuestas. Para la jugabilidad se 
 
 <h2>💻 Deploy: </h2> 
 
-https://questionados-ap.herokuapp.com/
+- Heroku + Postgres: https://questionados-ap.herokuapp.com/
 
 
 </br>
