@@ -1,4 +1,4 @@
-<h1 align="center">💻 QUESTIONADOS</h1>
+<h1 align="center">❓ QUESTIONADOS ❓</h1>
 
 Creacion de una API Rest al estilo del juego de preguntas y respuestas "Peguntados".
 Permite crear categorias y preguntas con sus respuestas. Para la jugabilidad se generan preguntas de forma aleatoria.
